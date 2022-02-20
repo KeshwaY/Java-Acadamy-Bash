@@ -1,5 +1,11 @@
 #!/bin/bash
-DIR=$(pwd)
+DIR=""
+if [[ -d $1 ]]
+then
+	DIR=$1
+else
+	DIR=$(pwd)
+fi
 
 print_dir() {	
 	local LAST=$2

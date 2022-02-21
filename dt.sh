@@ -7,6 +7,9 @@ else
 	DIR=$(pwd)
 fi
 
+OIFS="$IFS"
+IFS=$'\n'
+
 print_dir() {	
 	local LAST=$2
 	echo $LAST$(basename $1):
@@ -18,14 +21,14 @@ print_dir() {
 
 	LAST+="--"
 	
-	if [ -z "$(ls -A $1)" ]
+	if [[ -z "$(ls -A $1)" ]]
 	then
 		return 0
 	fi
 	for ENTRY in $1/*
 	do
 		
-		if [ -d $ENTRY ]
+		if [[ -d $ENTRY ]]
 		then
 			print_dir $ENTRY $LAST 
 		else
@@ -35,4 +38,4 @@ print_dir() {
 }
 
 print_dir $DIR ""
-
+IFS="$OIFS"

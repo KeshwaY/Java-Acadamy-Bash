@@ -13,6 +13,9 @@ else
 	DIR=$(pwd)
 fi
 
+OIFS="$IFS"
+IFS=$'\n'
+
 look_for_file() {
 	local FILE_NAME=$1
 	local ENTRY=$2
@@ -38,4 +41,5 @@ look_for_file() {
 }
 
 look_for_file $FILE $DIR
+IFS="$OIFS"
 
